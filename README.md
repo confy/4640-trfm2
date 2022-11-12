@@ -17,7 +17,11 @@ Install digital ocean ansible plugin -
 
 Create an API key on digital ocean and export it as an environment variable - DO_API_TOKEN
 
-Also create an ssh key on your local system called "4640" and add it to digital ocean.
+Also create an ssh key on your local system called "4640" and add the public key to digital ocean.
+
+`ssh-keygen`
+
+add the private key as `mgmt/4640.pem`
 
 In the dev folder, create a real `terraform.tfvars` from the `example.tfvars` with your own token and region
 
