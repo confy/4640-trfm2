@@ -1,0 +1,21 @@
+# Using keyed groups and compose for hostvars
+plugin: community.digitalocean.digitalocean
+# api_token: 
+attributes:
+  - id
+  - name
+  - memory
+  - vcpus
+  - disk
+  - size
+  - image
+  - networks
+  - volume_ids
+  - tags
+  - region
+groups:
+  webservers: "'lab4640' in (do_tags)"
+compose:
+  ansible_host: do_networks.v4 | selectattr('type','eq','public')| map(attribute='ip_address') | first
+  class: do_size.description | lower
+  distro: do_image.distribution | lower
